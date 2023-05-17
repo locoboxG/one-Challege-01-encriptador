@@ -40,7 +40,7 @@
         var origenD = document.getElementById("txtEntra").value;
         var cLim = origenD.length;
         var destinoD = "";
-        for (var cx= 0; cx< 22; cx++) {
+        for (var cx= 0; cx<cLim; cx++) {
             var cadenita = origenD.substring(cx,cx+1);
             if (cadenita=="e") {
                 destinoD = destinoD.concat("enter");    
@@ -56,12 +56,71 @@
                 destinoD = destinoD.concat(cadenita);
             }
         }
-        alert (destinoD);
+        /*alert (destinoD); */
         document.getElementById("muneco").style.width = 0;
         document.getElementById("muneco").style.height = 0;
         document.getElementById("inst2").innerHTML = "Mensaje Encriptado";
         document.getElementById("inst3").innerHTML = destinoD;
         document.getElementById("copiado").style.opacity = 1;
+    }
+
+    document.getElementById("copiado").onclick = function() {
+        var mensaje = document.getElementById("inst3").innerHTML;
+        /*alert (mensaje); */
+        navigator.clipboard.writeText(mensaje)
+        .then(() =>   {console.log('Text copied to clipboard');  })
+        .catch(err => {console.error('Error in copying text: ', err); });
+    }
+
+    function compara (cadena,posIni,comparacion) {
+        var cuantos = comparacion.length;
+        var extracto = cadena.substring(posIni,posIni+cuantos);
+        return (extracto == comparacion);
+
+    }
+
+    function muestraMensaje() {
+        var origenD = document.getElementById("txtEntra").value;
+        var cLim = origenD.length;
+        var cx= 0;
+        var destinoD = "";
+        var exito = true;
+
+        while (cx<cLim & exito) {
+            var cadenita = origenD.substring(cx,cx+1);
+            if (cadenita=="e") {
+                exito = compara(origenD,cx,"enter");   
+                cx+=5;
+            } else if (cadenita=="i") {
+                exito = compara(origenD,cx,"imes");
+                cx+=4;
+            } else if (cadenita=="a") {
+                exito = compara(origenD,cx,"ai");
+                cx+=2;
+            } else if (cadenita=="o") {
+                exito = compara(origenD,cx,"ober");
+                cx+=4;
+            } else if (cadenita=="u") {
+                exito = compara(origenD,cx,"ufat");
+                cx+=4;
+            } else {
+                cx++;
+            }
+                destinoD = destinoD.concat(cadenita);
+        }
+
+        /*alert (destinoD); */
+        document.getElementById("muneco").style.width = 0;
+        document.getElementById("muneco").style.height = 0;
+        if (exito) {
+            document.getElementById("inst2").innerHTML = "Mensaje Encriptado";
+            document.getElementById("inst3").innerHTML = destinoD;
+            document.getElementById("copiado").style.opacity = 1;
+        } else {
+            document.getElementById("inst2").innerHTML = "Mensaje Erroneo";
+            document.getElementById("inst3").innerHTML = "El mensaje no es correcto";
+        }
+        
     }
 
 
