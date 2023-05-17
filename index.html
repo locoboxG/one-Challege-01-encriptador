@@ -12,11 +12,11 @@
     </nav>
     <main>
         <section id="entrada">
-            <textarea placeholder="Ingrese el texto aqui"> </textarea>
+            <textarea placeholder="Ingrese el texto aqui" id="entrada"> Ingrese el texto aqui</textarea>
             <p id="inst1">&#9888; Solo letras minúsculas y sin acentos</p>
             <div id="botones">
-                <input type="button" value="Encriptar" id="encripta"> 
-                <input type="button" value="Desencriptar" id="descifra"> 
+                <input type="button" value="Encriptar" id="encripta"    onclick="ocultaMensaje()" /> 
+                <input type="button" value="Desencriptar" id="descifra" onclick="muestraMensaje()"/> 
             </div>
         </section>            
 
@@ -32,5 +32,15 @@
         <p>Blue Monday Software <--> Negreros Orellana Jose Antonio</p>
     </footer>
 </body>
+
+<script>
+    document.getElementById('entrada').onfocus; 
+
+    function ocultaMensaje() {
+        var origenD = document.getElementById("entrada").value;
+        alert (origenD);
+    }
+</script>
+
 </html>
 
