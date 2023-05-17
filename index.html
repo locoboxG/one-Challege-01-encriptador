@@ -12,7 +12,7 @@
     </nav>
     <main>
         <section id="entrada">
-            <textarea placeholder="Ingrese el texto aqui" id="entrada"> Ingrese el texto aqui</textarea>
+            <textarea placeholder="Ingrese el texto aqui" id="txtEntra"> Ingrese el texto aqui</textarea>
             <p id="inst1">&#9888; Solo letras minúsculas y sin acentos</p>
             <div id="botones">
                 <input type="button" value="Encriptar" id="encripta"    onclick="ocultaMensaje()" /> 
@@ -37,7 +37,7 @@
     document.getElementById('entrada').onfocus; 
 
     function ocultaMensaje() {
-        var origenD = document.getElementById("entrada").value;
+        var origenD = document.getElementById("txtEntra").value;
         alert (origenD);
     }
 </script>
