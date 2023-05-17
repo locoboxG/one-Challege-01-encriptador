@@ -38,8 +38,33 @@
 
     function ocultaMensaje() {
         var origenD = document.getElementById("txtEntra").value;
-        alert (origenD);
+        var cLim = origenD.length;
+        var destinoD = "";
+        for (var cx= 0; cx< 22; cx++) {
+            var cadenita = origenD.substring(cx,cx+1);
+            if (cadenita=="e") {
+                destinoD = destinoD.concat("enter");    
+            } else if (cadenita=="i") {
+                destinoD = destinoD.concat("imes");
+            } else if (cadenita=="a") {
+                destinoD = destinoD.concat("ai");
+            } else if (cadenita=="o") {
+                destinoD = destinoD.concat("ober");
+            } else if (cadenita=="u") {
+                destinoD = destinoD.concat("ufat");
+            } else {
+                destinoD = destinoD.concat(cadenita);
+            }
+        }
+        alert (destinoD);
+        document.getElementById("muneco").style.width = 0;
+        document.getElementById("muneco").style.height = 0;
+        document.getElementById("inst2").innerHTML = "Mensaje Encriptado";
+        document.getElementById("inst3").innerHTML = destinoD;
+        document.getElementById("copiado").style.opacity = 1;
     }
+
+
 </script>
 
 </html>
