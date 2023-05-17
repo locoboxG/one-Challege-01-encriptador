@@ -2,6 +2,10 @@ body {
     background: #E5E5E5;
 }
 
+nav img {
+    padding: 2px 35px;
+}
+
 main p{
     text-align: center;
  }
@@ -48,6 +52,13 @@ main p{
     width: 45%;
     height: 3em;
     margin: 2%;
+    border-radius: 1em;
+    transition: all 0.7s;
+}
+
+#botones input:hover {
+    background: #0A3871;
+    color: #fff;
 }
 
 #resultado{
@@ -86,9 +97,36 @@ main p{
 }
 
 #resultado input{
-    width: 45%;
+    width: 46%;
     height: 3em;
-    margin: 1em 20%;
+    margin: 1em 27%;
+    border-radius: 1em;
+    transition: all 0.7s;
+    opacity: 0%;
+}
+
+#resultado input:hover {
+    background: #0A3871;
+    color: #fff;
+}
+
+footer {
+    background: #000;
+    background-image: url("imagenes/pie.jpg");
+    width: 100%;
+    height: 60px;
+    color:lightcyan;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    vertical-align: bottom;
+    display: inline-block;
+
+}
+
+footer p {
+    margin:20px 0;
 }
 
 /******************DISEÑO RESPONSIVO***********************************************************************/
@@ -108,6 +146,10 @@ main p{
         margin: 0 30%;
     }
     
+    footer {
+        font-size: 12px;
+        font-weight: bold;
+    }
 
 }
 
@@ -116,5 +158,10 @@ main p{
         width: 0px;
         height: 0px;
         margin: 0;
+    }
+
+    footer {
+        font-size: 8px;
+        font-weight:normal;
     }
 }
