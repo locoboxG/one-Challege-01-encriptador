@@ -1,0 +1,183 @@
+body {
+    background: #E5E5E5;
+}
+
+nav img {
+    padding: 2px 35px;
+}
+
+main p{
+    text-align: center;
+}
+
+#entrada {
+    width: 52%;
+    margin: 2px;
+    padding: 5px;
+    display:block;
+    /* border: black solid; */
+    float: left;
+}
+
+#entrada textarea {
+    height: 7em;
+    width: 90%;
+    margin: 10px 5%;
+    background: #E5E5E5;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 150%;
+    text-transform: lowercase;
+    border-radius: 10%;
+}
+
+#txtLlave {
+    height: 1em;
+    width: 90%;
+    margin: 10px 5%;
+    background: #E5E5E5;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 150%;
+    text-transform: lowercase;
+}
+
+#inst1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: #495057;
+    opacity: 0.8;    
+}
+
+#botones {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#botones input {
+    width: 45%;
+    height: 3em;
+    margin: 10px 2%;
+    border-radius: 1em;
+    transition: all 0.7s;
+}
+
+#botones input:hover {
+    background: #0A3871;
+    color: #fff;
+}
+
+#resultado{
+    width: 42%;
+    margin: 2px;
+    padding: 5px;
+    display: block;
+    /* border: black solid; */
+    float: right;
+}
+
+#muneco{
+    height: 304px;
+    width:70%;
+    margin: 0 15%;
+}
+
+#inst2{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    color: #343A40; 
+}
+
+#inst3{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #495057;    
+}
+
+#resultado input{
+    width: 46%;
+    height: 3em;
+    margin: 1em 27%;
+    border-radius: 1em;
+    transition: all 0.7s;
+    opacity: 0%;
+}
+
+#resultado input:hover {
+    background: #0A3871;
+    color: #fff;
+}
+
+footer {
+    background: #000;
+    background-image: url("imagenes/pie.jpg");
+    width: 100%;
+    height: 60px;
+    color:lightcyan;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    vertical-align: bottom;
+    display: inline-block;
+
+}
+
+footer p {
+    margin:20px 0;
+}
+
+/******************DISEÑO RESPONSIVO***********************************************************************/
+@media screen and (max-width:740px) {
+    #entrada, #resultado {
+        width: 96%;
+        margin: 2px;
+        padding: 5px;
+        display:block;
+    }
+    
+    #muneco{
+        width:40%;
+        height: auto;
+        margin: 0 30%;
+    }
+    
+    footer {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+}
+
+@media screen and (max-width:360px) {
+    #botones input {
+        width: 80%;
+        margin: 10px 10%;
+    }
+    
+    #muneco{
+        width: 0px;
+        height: 0px;
+        margin: 0;
+    }
+
+    footer {
+        font-size: 8px;
+        font-weight:normal;
+    }
+}
