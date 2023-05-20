@@ -80,8 +80,6 @@
             //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
             //0123456789abcdefghijklmnopqrstuvwxyzñ
         }
-
-        /*alert (destinoD); */
         document.getElementById("muneco").style.width = 0;
         document.getElementById("muneco").style.height = 0;
         document.getElementById("inst2").innerHTML = "Mensaje Encriptado";
@@ -100,45 +98,26 @@
     function muestraMensaje() {
         var origenD = document.getElementById("txtEntra").value;
         var cLim = origenD.length;
+        var llaveD = document.getElementById("txtLlave").value;
+        var lLim =  llaveD.length;
         var cx= 0;
         var destinoD = "";
         var exito = true;
 
-        while (cx<cLim & exito) {
-            var cadenita = origenD.substring(cx,cx+1);
-            if (cadenita=="e") {
-                exito = compara(origenD,cx,"enter");   
-                cx+=5;
-            } else if (cadenita=="i") {
-                exito = compara(origenD,cx,"imes");
-                cx+=4;
-            } else if (cadenita=="a") {
-                exito = compara(origenD,cx,"ai");
-                cx+=2;
-            } else if (cadenita=="o") {
-                exito = compara(origenD,cx,"ober");
-                cx+=4;
-            } else if (cadenita=="u") {
-                exito = compara(origenD,cx,"ufat");
-                cx+=4;
-            } else {
-                cx++;
-            }
-                destinoD = destinoD.concat(cadenita);
+        for (var cx= 0; cx<cLim; cx++) {
+            cy = cx % lLim; 
+            let cadenita  = origenD.charCodeAt(cx);
+            let llavecita = llaveD.charCodeAt(cy);
+            let codificado = desplaza(cadenita,-llavecita);
+            destinoD = destinoD.concat(String.fromCharCode(caracterDe(codificado)));
+            //alert (cadenita +"("+ numeroDe(cadenita) + ") - " + llavecita +"("+ numeroDe(llavecita) + ") = " + codificado+"("+ caracterDe(codificado) +")");            
         }
 
-        /*alert (destinoD); */
         document.getElementById("muneco").style.width = 0;
         document.getElementById("muneco").style.height = 0;
-        if (exito) {
-            document.getElementById("inst2").innerHTML = "Mensaje Encriptado";
-            document.getElementById("inst3").innerHTML = destinoD;
-            document.getElementById("copiado").style.opacity = 1;
-        } else {
-            document.getElementById("inst2").innerHTML = "Mensaje Erroneo";
-            document.getElementById("inst3").innerHTML = "El mensaje no es correcto";
-        }
-        
+        document.getElementById("inst2").innerHTML = "Mensaje Encriptado";
+        document.getElementById("inst3").innerHTML = destinoD;
+        document.getElementById("copiado").style.opacity = 1;
     }
 
 
