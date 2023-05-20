@@ -38,26 +38,49 @@
 <script>
     document.getElementById('entrada').onfocus; 
 
+    function numeroDe (karac) {
+        if (karac>=48 & karac<=57)  { karac -= 47;}              // digitos
+        if (karac>=97 & karac<=122) { karac = karac - 96 + 10;}  // letras
+        if (karac==241)             { karac = 37;}               // ñ
+        return karac;
+    }
+
+    function caracterDe (karac) {
+        if (karac <= 10) {karac+=47;}
+        else if (karac <= 36) {karac+=86;}
+        else {karac=241;}
+        return karac;
+    }
+
+    function desplaza (letra, mueve) {
+            let result = numeroDe(letra) 
+            if (mueve > 0) {
+                result += numeroDe(Math.abs(mueve));
+                result %= 37;
+            } else {
+                result -= numeroDe(Math.abs(mueve));
+                if (result <=0) { result += 37};
+            }
+        return result;
+    }
+
     function ocultaMensaje() {
         var origenD = document.getElementById("txtEntra").value;
         var cLim = origenD.length;
+        var llaveD = document.getElementById("txtLlave").value;
+        var lLim =  llaveD.length;
         var destinoD = "";
         for (var cx= 0; cx<cLim; cx++) {
-            var cadenita = origenD.substring(cx,cx+1);
-            if (cadenita=="e") {
-                destinoD = destinoD.concat("enter");    
-            } else if (cadenita=="i") {
-                destinoD = destinoD.concat("imes");
-            } else if (cadenita=="a") {
-                destinoD = destinoD.concat("ai");
-            } else if (cadenita=="o") {
-                destinoD = destinoD.concat("ober");
-            } else if (cadenita=="u") {
-                destinoD = destinoD.concat("ufat");
-            } else {
-                destinoD = destinoD.concat(cadenita);
-            }
+            cy = cx % lLim; 
+            let cadenita  = origenD.charCodeAt(cx);
+            let llavecita = llaveD.charCodeAt(cy);
+            let codificado = desplaza(cadenita,llavecita);
+            destinoD = destinoD.concat(String.fromCharCode(caracterDe(codificado)));
+            //alert (cadenita +"("+ numeroDe(cadenita) + ") + " + llavecita +"("+ numeroDe(llavecita) + ") = " + codificado+"("+ caracterDe(codificado) +")");
+            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            //0123456789abcdefghijklmnopqrstuvwxyzñ
         }
+
         /*alert (destinoD); */
         document.getElementById("muneco").style.width = 0;
         document.getElementById("muneco").style.height = 0;
@@ -72,13 +95,6 @@
         navigator.clipboard.writeText(mensaje)
         .then(() =>   {console.log('Text copied to clipboard');  })
         .catch(err => {console.error('Error in copying text: ', err); });
-    }
-
-    function compara (cadena,posIni,comparacion) {
-        var cuantos = comparacion.length;
-        var extracto = cadena.substring(posIni,posIni+cuantos);
-        return (extracto == comparacion);
-
     }
 
     function muestraMensaje() {
