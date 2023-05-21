@@ -2,8 +2,32 @@ body {
     background: #E5E5E5;
 }
 
-nav img {
+header img {
     padding: 2px 35px;
+}
+
+nav {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+
+nav a {
+    text-transform: uppercase;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #c78c19;
+    text-decoration:underline; 
 }
 
 main p{
@@ -131,13 +155,15 @@ footer p {
 
 /******************DISEÑO RESPONSIVO***********************************************************************/
 @media screen and (max-width:740px) {
+    nav a {
+        font-size: 12px;
+    } 
+
     #entrada, #resultado {
         width: 96%;
         margin: 2px;
         padding: 5px;
         display:block;
-        /* border: black solid; */
-        /*float: left;*/
     }
     
     #muneco{
@@ -153,7 +179,26 @@ footer p {
 
 }
 
+@media screen and (max-width:440px) {
+    nav li {
+        display: block;
+    }
+}
+
 @media screen and (max-width:360px) {
+    nav a {
+        font-size: 9px;
+    } 
+
+    nav li {
+        display: block;
+    }
+
+    #botones input {
+        width: 80%;
+        margin: 10px 10%;
+    }
+    
     #muneco{
         width: 0px;
         height: 0px;
